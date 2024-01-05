@@ -1,0 +1,16 @@
+<div class="grid grid-cols-2">
+  @for (touristSite of touristSite$ | async; track touristSite.id) {
+    @defer (on viewport) {
+      <app-tourist-site-item [touristSite]="touristSite" class="block my-4 tourist-site-min-height"/>
+    } @placeholder{
+      <app-tourist-site-item-skeleton class="block my-4 tourist-site-min-height"/>
+    } @loading {
+      <app-tourist-site-item-skeleton [animate]="true" class="block my-4 tourist-site-min-height"/>
+    }
+  } @empty {
+    <app-tourist-site-item-skeleton class="block my-4 tourist-site-min-height"/>
+  }
+</div>
+
+
+
